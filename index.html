@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WebtoGo TV</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/translate.js" defer></script>
+</head>
+<body class="default-theme">
+  <div id="boot-screen">Booting WebtoGo TV...</div>
+  <div id="home-screen" style="display:none;">
+    <h1>WebtoGo TV</h1>
+    <div class="app-grid">
+      <button onclick="installApp('youtube')">Install YouTube</button>
+      <button onclick="installApp('iptv')">Install IPTV</button>
+      <button onclick="installApp('browser')">Install Web Browser</button>
+    </div>
+    <div id="installed-apps"></div>
+  </div>
+  <script>
+    // Boot animation logic
+    setTimeout(() => {
+      document.getElementById('boot-screen').style.display = 'none';
+      document.getElementById('home-screen').style.display = 'block';
+    }, 2000);
+
+    // App installation logic (session-only)
+    function installApp(app) {
+      const appNames = {
+        youtube: "YouTube",
+        iptv: "IPTV",
+        browser: "Web Browser"
+      };
+      const container = document.getElementById('installed-apps');
+      const appElement = document.createElement('div');
+      appElement.textContent = appNames[app] + " (installed)";
+      container.appendChild(appElement);
+    }
+  </script>
+</body>
+</html>
